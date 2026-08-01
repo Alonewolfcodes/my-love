@@ -1,30 +1,58 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
+type Heart = {
+  id: number;
+  left: number;
+  size: number;
+  duration: number;
+  delay: number;
+};
+
 export default function AnimatedBackground() {
+  const [hearts, setHearts] = useState<Heart[]>([]);
+
+  useEffect(() => {
+    const generatedHearts = Array.from({ length: 15 }, (_, i) => ({
+      id: i,
+      left: Math.random() * 100,
+      size: 18 + Math.random() * 18,
+      duration: 8 + Math.random() * 5,
+      delay: Math.random() * 5,
+    }));
+
+    setHearts(generatedHearts);
+  }, []);
+
   return (
     <>
-      {[...Array(15)].map((_, i) => (
+      {hearts.map((heart) => (
         <motion.div
-          key={i}
+          key={heart.id}
           initial={{
-            y: "100vh",
-            x: Math.random() * window.innerWidth,
-            opacity: 0.4,
+            y: "110vh",
+            x: `${heart.left}vw`,
+            opacity: 0,
           }}
           animate={{
             y: "-20vh",
-            opacity: 0,
+            opacity: [0, 1, 1, 0],
           }}
           transition={{
-            duration: 8 + Math.random() * 5,
+            duration: heart.duration,
+            delay: heart.delay,
             repeat: Infinity,
-            delay: Math.random() * 5,
+            ease: "linear",
           }}
           style={{
-            position: "absolute",
-            fontSize: 30,
+            position: "fixed",
+            left: 0,
+            top: 0,
+            fontSize: `${heart.size}px`,
+            pointerEvents: "none",
+            zIndex: 0,
           }}
         >
           ❤️
