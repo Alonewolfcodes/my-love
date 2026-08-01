@@ -7,8 +7,8 @@ import MovingNoButton from "./MovingNoButton";
 
 const slides = [
   {
-    image: "/gifs/PIC1.gif",
-    text: "You make every single day brighter ❤️",
+    image: "/photos/pic1.jpeg",
+    text: "They are so cute together right!!! ❤️",
   },
   {
     image: "/gifs/PIC2.gif",
@@ -16,7 +16,7 @@ const slides = [
   },
   {
     image: "/gifs/PIC1.gif",
-    text: "I already knew you'd try that 😏",
+    text: "I really neead a hug like this 😏",
   },
   {
     image: "/gifs/PIC2.gif",
@@ -78,10 +78,10 @@ export default function ProposalCard() {
 
         <motion.div
           key={slides[index].image}
-          initial={{ opacity:0, scale:.9 }}
-          animate={{ opacity:1, scale:1 }}
-          exit={{ opacity:0, scale:1.1 }}
-          transition={{ duration:.5 }}
+          initial={{ opacity: 0, scale: .9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 1.1 }}
+          transition={{ duration: .5 }}
         >
 
           <div className="relative w-full h-[350px] rounded-3xl overflow-hidden">
@@ -98,8 +98,8 @@ export default function ProposalCard() {
           <motion.p
             key={slides[index].text}
             className="text-2xl mt-6 font-semibold"
-            initial={{ opacity:0, y:20 }}
-            animate={{ opacity:1, y:0 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
           >
             {slides[index].text}
           </motion.p>
@@ -108,7 +108,7 @@ export default function ProposalCard() {
 
       </AnimatePresence>
 
-      <div className="relative mt-12 h-40">
+      <div className="relative mt-12 h-40" style={{ backgroundColor: 'red' }}>
 
         <button
           onClick={() => setYes(true)}

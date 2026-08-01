@@ -15,13 +15,11 @@ body {
 body {
 
     background:
-linear-gradient(
-135deg,
-#2c3e50,
-#4ca1af
-);
-
-    background-size: 400% 400%;
+        linear-gradient(135deg,
+            #0f172a,
+            #1e293b,
+            #312e81,
+            #4c1d95);
 
     animation: bg 12s ease infinite;
 
