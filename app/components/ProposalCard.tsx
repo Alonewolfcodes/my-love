@@ -108,7 +108,7 @@ export default function ProposalCard() {
 
       </AnimatePresence>
 
-      <div className="relative mt-12 h-40" style={{ backgroundColor: 'red' }}>
+      <div className="relative mt-12 h-64" style={{ backgroundColor: 'red' }}>
 
         <button
           onClick={() => setYes(true)}
