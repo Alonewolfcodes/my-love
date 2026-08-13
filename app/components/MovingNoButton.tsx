@@ -4,7 +4,7 @@ import { useState } from "react";
 
 export default function MovingNoButton({
   onEscape,
-  message
+  message,
 }: {
   onEscape: () => void;
   message: string;

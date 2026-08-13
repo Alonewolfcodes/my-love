@@ -29,35 +29,59 @@ const slides = [
 ];
 
 const noMessages = [
-  "NO 🥹",
-  "NO 🥹",
-  "NO 🥹",
-  "NO 🥹",
-  "NO 🥹",
-  "NO 🥹",
-  "NO 🥹",
-  "NO 🥹",
+  "🥺 Nooo...",
+  "👉 Click YES ❤️",
+  "💔 That hurts...",
+  "🥹 Pretty please...",
+  "❤️ Just one YES...",
+  "🙈 Wrong button!",
+  "🤍 Please don't...",
+  "🥺 Give YES a chance!",
 ];
 
 const yesMessages = [
-  "YES 🥰",
-  "YES 🥰",
-  "YES 🥰",
-  "YES 🥰",
-  "YES 🥰",
-  "YES 🥰",
-  "YES 🥰",
-  "YES 🥰",
+  "❤️ Click Me",
+  "🥺 Please",
+  "🤞 One Tap",
+  "💕 Trust Me",
+  "🥰 Choose Me",
+  "🌹 Say YES",
+  "💖 Please ❤️",
+  "😘 I'm Waiting",
 ];
 
 export default function ProposalCard() {
   const [index, setIndex] = useState(0);
-  const [yes, setYes] = useState(false);
 
   const [noMessageIndex, setNoMessageIndex] = useState(0);
   const [yesMessageIndex, setYesMessageIndex] = useState(0);
-  function nextSlide() {
-    setIndex((prev) => (prev + 1) % slides.length);
+
+  // Called when YES is clicked
+  function handleYes() {
+    // If this is the final question, call the number
+    if (index === slides.length - 1) {
+      window.location.href = "tel:+917265089367";
+      return;
+    }
+
+    // Otherwise move to the next question/photo
+    setIndex((prev) => prev + 1);
+
+    // Change button messages too
+    setYesMessageIndex(
+      (prev) => (prev + 1) % yesMessages.length
+    );
+
+    setNoMessageIndex(
+      (prev) => (prev + 1) % noMessages.length
+    );
+  }
+
+  // Called whenever she tries to touch/hover NO
+  function handleNo() {
+    // IMPORTANT:
+    // Don't change the slide/question here.
+
     setNoMessageIndex(
       (prev) => (prev + 1) % noMessages.length
     );
@@ -67,46 +91,31 @@ export default function ProposalCard() {
     );
   }
 
-  if (yes) {
-    return (
-      <motion.div
-        className="glass w-[90%] max-w-xl p-10 text-center"
-        initial={{ scale: 0 }}
-        animate={{ scale: 1 }}
-      >
-        <h1 className="text-6xl mb-5">❤️</h1>
-
-        <h2 className="text-4xl font-bold">
-          YAYYYYY!!!
-        </h2>
-
-        <p className="mt-6 text-xl">
-          You just made me the happiest person ❤️
-        </p>
-
-        <p className="mt-3 text-lg">
-          I promise to always keep you smiling 😊
-        </p>
-      </motion.div>
-    );
-  }
-
   return (
     <motion.div
-      className=" w-[90%] max-w-xl p-8 text-center relative"
-      initial={{ scale: .8 }}
+      className="w-[90%] max-w-xl p-8 text-center relative"
+      initial={{ scale: 0.8 }}
       animate={{ scale: 1 }}
     >
       <AnimatePresence mode="wait">
-
         <motion.div
           key={slides[index].image}
-          initial={{ opacity: 0, scale: .9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 1.1 }}
-          transition={{ duration: .5 }}
+          initial={{
+            opacity: 0,
+            scale: 0.9,
+          }}
+          animate={{
+            opacity: 1,
+            scale: 1,
+          }}
+          exit={{
+            opacity: 0,
+            scale: 1.1,
+          }}
+          transition={{
+            duration: 0.5,
+          }}
         >
-
           <div className="relative w-full h-[350px] rounded-3xl overflow-hidden">
             <Image
               src={slides[index].image}
@@ -138,24 +147,28 @@ export default function ProposalCard() {
           >
             {slides[index].text}
           </motion.p>
-
         </motion.div>
-
       </AnimatePresence>
 
       <div className="relative mt-12 h-64 glass">
 
-        <a
-          href="tel:+917265089367"
+        {/* YES BUTTON */}
+
+        <button
+          onClick={handleYes}
           className="yesButton absolute left-12 bottom-10 px-5 py-2.5 rounded-full text-white text-sm font-semibold whitespace-nowrap"
         >
           {yesMessages[yesMessageIndex]}
-        </a>
+        </button>
 
-        <MovingNoButton onEscape={nextSlide} message={noMessages[noMessageIndex]} />
+        {/* NO BUTTON */}
+
+        <MovingNoButton
+          onEscape={handleNo}
+          message={noMessages[noMessageIndex]}
+        />
 
       </div>
-
     </motion.div>
   );
 }
