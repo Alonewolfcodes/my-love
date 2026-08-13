@@ -44,7 +44,7 @@ export default function MovingNoButton({
         top: position.top,
         transition: "0.25s",
       }}
-      className="bg-gray-700 hover:bg-black text-white px-8 py-4 rounded-full text-xl"
+      className="whitespace-nowrap bg-red-500 hover:bg-red-600 text-white px-5 py-2.5 rounded-full font-semibold text-sm shadow-lg"
     >
      {message}
     </button>

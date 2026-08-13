@@ -147,7 +147,7 @@ export default function ProposalCard() {
 
         <a
           href="tel:+919574847218"
-          className="yesButton  absolute left-12 bottom-10 bg-pink-600 hover:bg-pink-700 transition px-8 py-4 rounded-full text-white text-xl"
+          className="yesButton absolute left-12 bottom-10 px-5 py-2.5 rounded-full text-white text-sm font-semibold whitespace-nowrap"
         >
           {yesMessages[yesMessageIndex]}
         </a>
