@@ -219,7 +219,7 @@ body {
 
 @media (max-width: 640px) {
   .romanticText {
-    font-size: 23px;
+    font-size: 16px;
     line-height: 1.45;
   }
 }
