@@ -10,7 +10,7 @@ export default function MovingNoButton({
   message: string;
 }) {
   const [position, setPosition] = useState({
-    left: 120,
+    left: 210,
     top: 45,
   });
 
@@ -46,7 +46,7 @@ export default function MovingNoButton({
       }}
       className="whitespace-nowrap bg-red-500 hover:bg-red-600 text-white px-5 py-2.5 rounded-full font-semibold text-sm shadow-lg"
     >
-     {message}
+      {message}
     </button>
   );
 }
