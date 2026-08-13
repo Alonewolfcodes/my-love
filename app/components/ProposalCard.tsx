@@ -146,7 +146,7 @@ export default function ProposalCard() {
       <div className="relative mt-12 h-64 glass">
 
         <a
-          href="tel:+919574847218"
+          href="tel:+917265089367"
           className="yesButton absolute left-12 bottom-10 px-5 py-2.5 rounded-full text-white text-sm font-semibold whitespace-nowrap"
         >
           {yesMessages[yesMessageIndex]}
