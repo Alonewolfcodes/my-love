@@ -10,8 +10,8 @@ export default function MovingNoButton({
   message: string;
 }) {
   const [position, setPosition] = useState({
-    left: 220,
-    top: 20,
+    left: 120,
+    top: 45,
   });
 
   function move() {
