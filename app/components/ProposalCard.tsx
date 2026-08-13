@@ -29,25 +29,25 @@ const slides = [
 ];
 
 const noMessages = [
-  "🥺 Nooo...",
-  "👉 Click YES ❤️",
-  "💔 That hurts...",
-  "🥹 Pretty please...",
-  "❤️ Just one YES...",
-  "🙈 Wrong button!",
-  "🤍 Please don't...",
-  "🥺 Give YES a chance!",
+  "NO 🥹",
+  "NO 🥹",
+  "NO 🥹",
+  "NO 🥹",
+  "NO 🥹",
+  "NO 🥹",
+  "NO 🥹",
+  "NO 🥹",
 ];
 
 const yesMessages = [
-  "❤️ Click Me",
-  "🥺 Please",
-  "🤞 One Tap",
-  "💕 Trust Me",
-  "🥰 Choose Me",
-  "🌹 Say YES",
-  "💖 Please ❤️",
-  "😘 I'm Waiting",
+  "YES 🥰",
+  "YES 🥰",
+  "YES 🥰",
+  "YES 🥰",
+  "YES 🥰",
+  "YES 🥰",
+  "YES 🥰",
+  "YES 🥰",
 ];
 
 export default function ProposalCard() {
