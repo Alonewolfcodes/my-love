@@ -7,41 +7,64 @@ import MovingNoButton from "./MovingNoButton";
 
 const slides = [
   {
-    image: "/photos/pic1.jpeg",
-    text: "They are so cute together right!!! ❤️",
+    image: "/photos/IMG_1.jpeg",
+    text: "Am I the guy you see in your dreams?",
   },
   {
-    image: "/gifs/PIC2.gif",
-    text: "Still trying to press No? 😂",
+    image: "/photos/IMG_2.jpeg",
+    text: "Am I the one after meeting whom you don't want anything else?",
   },
   {
-    image: "/gifs/PIC1.gif",
-    text: "I really neead a hug like this 😏",
+    image: "/photos/IMG_3.jpeg",
+    text: "Am I the one after meeting whom you don't want anything else?",
   },
   {
-    image: "/gifs/PIC2.gif",
-    text: "No button is a little shy today ❤️",
+    image: "/photos/IMG_4.jpeg",
+    text: "Am I the one with whom you feel you have everything?",
   },
   {
-    image: "/gifs/PIC1.gif",
-    text: "You look beautiful every day ❤️",
+    image: "/photos/IMG_5.jpeg",
+    text: "If I am the same person then you can live the happy moments of your life by tapping Yes.",
   },
-  {
-    image: "/gifs/PIC2.gif",
-    text: "Maybe YES is the better choice 😉",
-  },
-  {
-    image: "/gifs/PIC1.gif",
-    text: "One last question...",
-  },
+];
+
+const noMessages = [
+  "🥺 Nooo...",
+  "👉 Click YES ❤️",
+  "💔 That hurts...",
+  "🥹 Pretty please...",
+  "❤️ Just one YES...",
+  "🙈 Wrong button!",
+  "🤍 Please don't...",
+  "🥺 Give YES a chance!",
+];
+
+const yesMessages = [
+  "❤️ Click Me",
+  "🥺 Please",
+  "🤞 One Tap",
+  "💕 Trust Me",
+  "🥰 Choose Me",
+  "🌹 Say YES",
+  "💖 Please ❤️",
+  "😘 I'm Waiting",
 ];
 
 export default function ProposalCard() {
   const [index, setIndex] = useState(0);
   const [yes, setYes] = useState(false);
 
+  const [noMessageIndex, setNoMessageIndex] = useState(0);
+  const [yesMessageIndex, setYesMessageIndex] = useState(0);
   function nextSlide() {
     setIndex((prev) => (prev + 1) % slides.length);
+    setNoMessageIndex(
+      (prev) => (prev + 1) % noMessages.length
+    );
+
+    setYesMessageIndex(
+      (prev) => (prev + 1) % yesMessages.length
+    );
   }
 
   if (yes) {
@@ -70,7 +93,7 @@ export default function ProposalCard() {
 
   return (
     <motion.div
-      className="glass w-[90%] max-w-xl p-8 text-center relative"
+      className=" w-[90%] max-w-xl p-8 text-center relative"
       initial={{ scale: .8 }}
       animate={{ scale: 1 }}
     >
@@ -85,21 +108,33 @@ export default function ProposalCard() {
         >
 
           <div className="relative w-full h-[350px] rounded-3xl overflow-hidden">
-
             <Image
               src={slides[index].image}
               fill
               alt=""
-              className="object-cover"
+              className="object-contain"
             />
-
           </div>
 
           <motion.p
             key={slides[index].text}
-            className="text-2xl mt-6 font-semibold"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            className="romanticText"
+            initial={{
+              opacity: 0,
+              y: 25,
+              scale: 0.96,
+              filter: "blur(6px)",
+            }}
+            animate={{
+              opacity: 1,
+              y: 0,
+              scale: 1,
+              filter: "blur(0px)",
+            }}
+            transition={{
+              duration: 0.7,
+              ease: "easeOut",
+            }}
           >
             {slides[index].text}
           </motion.p>
@@ -108,16 +143,16 @@ export default function ProposalCard() {
 
       </AnimatePresence>
 
-      <div className="relative mt-12 h-64" style={{ backgroundColor: 'red' }}>
+      <div className="relative mt-12 h-64 glass">
 
-        <button
-          onClick={() => setYes(true)}
-          className="absolute left-12 bottom-10 bg-pink-600 hover:bg-pink-700 transition px-8 py-4 rounded-full text-white text-xl"
+        <a
+          href="tel:+919574847218"
+          className="yesButton  absolute left-12 bottom-10 bg-pink-600 hover:bg-pink-700 transition px-8 py-4 rounded-full text-white text-xl"
         >
-          YES ❤️
-        </button>
+          {yesMessages[yesMessageIndex]}
+        </a>
 
-        <MovingNoButton onEscape={nextSlide} />
+        <MovingNoButton onEscape={nextSlide} message={noMessages[noMessageIndex]} />
 
       </div>
 
