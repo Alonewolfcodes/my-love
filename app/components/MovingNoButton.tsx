@@ -19,7 +19,7 @@ export default function MovingNoButton({
     let top = position.top;
 
     do {
-      left = Math.random() * 250;
+      left = Math.random() * 210;
       top = Math.random() * 120;
     } while (
       Math.abs(left - position.left) < 120 &&
